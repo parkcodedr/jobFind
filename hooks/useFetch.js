@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { RAPID_API_KEY } from '@env';
+import { RAPID_API_KEY } from "@env";
 import axios from "axios";
 
 const useFetch = (endpoint, query) => {
@@ -17,7 +17,7 @@ const useFetch = (endpoint, query) => {
     },
     url: `https://jsearch.p.rapidapi.com/${endpoint}`,
     params: {
-      query: { ...query },
+      ...query,
     },
   };
   const fetchData = async () => {
@@ -28,7 +28,7 @@ const useFetch = (endpoint, query) => {
       setIsLoading(false);
     } catch (error) {
       setError(error);
-      console.log(error);
+      console.log({ error });
     } finally {
       setIsLoading(false);
     }
